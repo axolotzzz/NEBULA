@@ -2,6 +2,7 @@ from flask import Flask, request, render_template_string
 import requests
 import json
 import pandas as pd
+import os
 
 app = Flask(__name__)
 
@@ -21,13 +22,12 @@ def get_token():
 
 def load_part_numbers():
     try:
+        print("📂 Current files:", os.listdir())
         df = pd.read_excel("PartExportData_JR25000000943.xlsx")
-        part_list = df['partNumber'].dropna().astype(str).tolist()
-        print("Loaded part numbers:", part_list[:10])  # show first 10
-        return part_list
+        return df["partNumber"].dropna().astype(str).tolist()
     except Exception as e:
-        print("Excel load error:", e)
-        return []
+        print("⚠️ Excel load failed:", e)
+        return ["141414", "5156", "P8979"]
 
 form_html = """
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ form_html = """
     Customer Reference: <input name="customerReference" required><br><br>
     Invoice Number: <input name="invoiceNumber"><br><br>
 
-    <div id="partRows">
+    <div id="parts">
       <div class="part-row">
         <h3>Part</h3>
         Part Number: <input name="partNumber[]" list="parts" autocomplete="off" required>
@@ -88,7 +88,7 @@ form_html = """
     partDiv.innerHTML += " Quantity: ";
     partDiv.appendChild(quantityInput);
 
-    document.getElementById("partRows").appendChild(partDiv);
+    document.getElementById("parts").appendChild(partDiv);
   }
 </script>
 </body>
