@@ -12,13 +12,17 @@ def get_token():
         "userName": "Anish25",
         "password": "Anish@25"
     }
+    headers = {
+        "Content-Type": "application/json"
+    }
     try:
-        response = requests.post(auth_url, json=credentials)
+        response = requests.post(auth_url, json=credentials, headers=headers)
         response.raise_for_status()
         return response.json().get("token")
     except Exception as e:
         print("Auth error:", e)
         return None
+
 
 
 
