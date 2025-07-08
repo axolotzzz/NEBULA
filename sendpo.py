@@ -20,14 +20,17 @@ def get_token():
         print("Auth error:", e)
         return None
 
+
+
 def load_part_numbers():
     try:
         print("📂 Current files:", os.listdir())
-        df = pd.read_excel("PartExportData_JR25000000943.xlsx")
+        df = pd.read_csv("PartExportData.csv")
         return df["partNumber"].dropna().astype(str).tolist()
     except Exception as e:
-        print("⚠️ Excel load failed:", e)
+        print("⚠️ CSV load failed:", e)
         return ["141414", "5156", "P8979"]
+
 
 form_html = """
 <!DOCTYPE html>
