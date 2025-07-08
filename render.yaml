@@ -3,4 +3,5 @@ services:
     name: inbound-order-app
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn sendpo:app
+    startCommand: gunicorn sendpo:app --bind 0.0.0.0:$PORT
+
