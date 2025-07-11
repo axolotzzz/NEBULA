@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Use a hardcoded token instead of fetching it every time
 def get_token():
-    return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBbmlzaDI1IiwidXNlck5hbWUiOiJBbmlzaDI1Iiwicm9sZXMiOltudWxsXSwiaWF0IjoxNzUyMjEwNzI1LCJleHAiOjE3NTIyMzIzMjV9.6pd_udtpLFBlxR0ybF38zksICYvY8jUmsfIrIx1bz8OwrOetsBDMP6A9EXuOqFjYzutiLmB4i9K4-C4SXyR_GQ"
+    return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBbmlzaDI1IiwidXNlck5hbWUiOiJBbmlzaDI1Iiwicm9sZXMiOltudWxsXSwiaWF0IjoxNzUxODgwMDY3LCJleHAiOjE3NTE5MDE2Njd9.KeT2ZtvoagZL5u3ArztFkdU1FEkh5BiBHeQe18pQ19FPUXXwZrwHpxUj4YVKg-oolcTASoXSEHRJhPLXZIEmng"
 
 STATIC_PART_NUMBERS = ["141414", "5156", "P8979", "0001", "0002"]
 
@@ -42,7 +42,7 @@ form_html = """
 </head>
 <body>
   <h2>Submit Inbound Order</h2>
-  <form method="post">
+  <form method="post" action="https://YOUR-NGROK-ID.ngrok.io/">
     Account Master ID: <input name="accountMasterId" required><br><br>
     Comment: <input name="comment"><br><br>
     Customer Reference: <input name="customerReference" required><br><br>
