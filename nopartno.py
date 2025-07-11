@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template_string
 import requests
 import json
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 # Use a hardcoded token instead of fetching it every time
 def get_token():
