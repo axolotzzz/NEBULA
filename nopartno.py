@@ -22,29 +22,10 @@ form_html = """
     th { background-color: #f2f2f2; }
     .part-row { margin-bottom: 10px; }
   </style>
-  <script>
-    function addPartRow() {
-      const container = document.getElementById("parts");
-      const wrapper = document.createElement("div");
-      wrapper.className = "part-row";
-      wrapper.innerHTML = `
-        <hr>
-        <h3>Part</h3>
-        <label>Part Number: <input name="partNumber[]" list="parts" autocomplete="off" required></label>
-        <label>Quantity: <input name="quantity[]" required></label>
-      `;
-      container.appendChild(wrapper);
-    }
-  </script>
-  <datalist id="parts">
-    {% for part in part_numbers %}
-      <option value="{{ part }}">
-    {% endfor %}
-  </datalist>
 </head>
 <body>
   <h2>Submit Inbound Order</h2>
-  <form method="post" action="https://d41100d81695.ngrok-free.app">
+  <form method="post" action="https://YOUR-NGROK-ID.ngrok.io/">
     <label for="accountMasterId"><b>Account Master ID:</b></label>
     <input id="accountMasterId" name="accountMasterId" placeholder="Enter Account ID" required><br><br>
 
@@ -68,6 +49,27 @@ form_html = """
     <button type="button" onclick="addPartRow()">+ Add Another Part</button><br><br>
     <button type="submit">Submit Order</button>
   </form>
+
+  <datalist id="parts">
+    {% for part in part_numbers %}
+      <option value="{{ part }}">
+    {% endfor %}
+  </datalist>
+
+  <script>
+    function addPartRow() {
+      const container = document.getElementById("parts");
+      const wrapper = document.createElement("div");
+      wrapper.className = "part-row";
+      wrapper.innerHTML = `
+        <hr>
+        <h3>Part</h3>
+        <label>Part Number: <input name="partNumber[]" list="parts" autocomplete="off" required></label>
+        <label>Quantity: <input name="quantity[]" required></label>
+      `;
+      container.appendChild(wrapper);
+    }
+  </script>
 </body>
 </html>
 """
