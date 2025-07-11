@@ -4,23 +4,9 @@ import json
 
 app = Flask(__name__)
 
+# Use a hardcoded token instead of fetching it every time
 def get_token():
-    auth_url = "https://uatvisibility.tvsscs.com/token/authenticate"
-    credentials = {
-        "userName": "Anish25",
-        "password": "Anish@25"
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    try:
-        response = requests.post(auth_url, data=json.dumps(credentials), headers=headers)
-        response.raise_for_status()
-        print("✅ Token response:", response.text)
-        return response.json().get("token")
-    except Exception as e:
-        print("❌ Auth error:", e)
-        return None
+    return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBbmlzaDI1IiwidXNlck5hbWUiOiJBbmlzaDI1Iiwicm9sZXMiOltudWxsXSwiaWF0IjoxNzUxODgwMDY3LCJleHAiOjE3NTE5MDE2Njd9.KeT2ZtvoagZL5u3ArztFkdU1FEkh5BiBHeQe18pQ19FPUXXwZrwHpxUj4YVKg-oolcTASoXSEHRJhPLXZIEmng"
 
 STATIC_PART_NUMBERS = ["141414", "5156", "P8979", "0001", "0002"]
 
