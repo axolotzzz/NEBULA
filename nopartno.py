@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template_string
+from flask_cors import CORS
 import requests
 import json
-from flask_cors import CORS
+
 app = Flask(__name__)
 CORS(app)
 
@@ -43,17 +44,24 @@ form_html = """
 </head>
 <body>
   <h2>Submit Inbound Order</h2>
-  <form method="post" action="https://d41100d81695.ngrok-free.app>
-    Account Master ID: <input name="accountMasterId" required><br><br>
-    Comment: <input name="comment"><br><br>
-    Customer Reference: <input name="customerReference" required><br><br>
-    Invoice Number: <input name="invoiceNumber"><br><br>
+  <form method="post" action="https://d41100d81695.ngrok-free.app">
+    <label for="accountMasterId"><b>Account Master ID:</b></label>
+    <input id="accountMasterId" name="accountMasterId" placeholder="Enter Account ID" required><br><br>
+
+    <label for="comment"><b>Comment:</b></label>
+    <input id="comment" name="comment" placeholder="Optional"><br><br>
+
+    <label for="customerReference"><b>Customer Reference:</b></label>
+    <input id="customerReference" name="customerReference" placeholder="Required" required><br><br>
+
+    <label for="invoiceNumber"><b>Invoice Number:</b></label>
+    <input id="invoiceNumber" name="invoiceNumber" placeholder="Optional"><br><br>
 
     <div id="parts">
       <div class="part-row">
         <h3>Part</h3>
-        Part Number: <input name="partNumber[]" list="parts" autocomplete="off" required>
-        Quantity: <input name="quantity[]" required>
+        <label>Part Number: <input name="partNumber[]" list="parts" autocomplete="off" required></label>
+        <label>Quantity: <input name="quantity[]" required></label>
       </div>
     </div>
 
