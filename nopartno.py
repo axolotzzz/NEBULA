@@ -25,7 +25,7 @@ form_html = """
 </head>
 <body>
   <h2>Submit Inbound Order</h2>
-  <form method="post" action="https://YOUR-NGROK-ID.ngrok.io/">
+  <form method="post" action="https://aba4da75b9d2.ngrok-free.app">
     <label for="accountMasterId"><b>Account Master ID:</b></label>
     <input id="accountMasterId" name="accountMasterId" placeholder="Enter Account ID" required><br><br>
 
